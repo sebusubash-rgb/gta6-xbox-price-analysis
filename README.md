@@ -1,70 +1,76 @@
-# Did used Xbox Series S prices rise before GTA VI?
+# Used Xbox Series S prices in Germany: an exploratory 2026 study
 
-**Independent Python data-analysis project | Germany | Research data through 18 November 2026**
+**Independent Python marketplace analysis · Historical data through 18 November 2026**
 
-I examined reported eBay Germany sold prices and Kleinanzeigen advertised prices for used Xbox Series S 512 GB consoles. The primary finding is an **observed increase in the eBay sample**, not proof that GTA VI caused the change.
+## The finding in five seconds
 
-## Main result: reported eBay sold prices
+In a filtered third-party eBay Germany sample, the **median reported SOLD price** of a used Xbox Series S 512 GB increased from **$230.54 in August (n=301)** to **$330.81 during 1–18 November (n=372)**: an **observed +43.5%**. USD is the source-reported currency; shipping excluded.
 
-| Filtered eBay sample | August 2026 | November 1–18, 2026 |
+![Simple four-month chart for readers in a hurry](figures/hero_LinkedIn_USD.png)
+
+**Critical context:** Microsoft raised the German **NEW** Xbox Series S 512 GB retail price **€349.99 → €499.99 (+42.9%)**, effective **1 August 2026**. [Microsoft announced the worldwide change](https://news.xbox.com/en-us/2026/06/25/xbox-console-price-update/) and [ComputerBase documented the German prices](https://www.computerbase.de/news/gaming/spielkonsole-xbox-series-x-s-kostet-jetzt-bis-zu-weitere-200-euro-mehr.98679/). **Our August eBay baseline is already after that change.** The numerical resemblance between +42.9% retail and +43.5% observed resale does **not** identify a causal effect; resale prices continued rising from August through November. GTA VI released on **19 November 2026**, one day *after* the dataset's final observation. [Rockstar release-time confirmation](https://support.rockstargames.com/articles/29jV3Cv2cCgvwM1XgtMO5o/grand-theft-auto-vi-regional-pre-load-and-release-times-on-playstation-5-and-xbox-series-x-or-s).
+
+## Don't overlook the earlier baseline
+
+January–April 2026 had a pooled median eBay reported sold price of **$193.47 (947 filtered records)**, compared with **$330.81** in November 1–18 (**about +71%**). Individual January–May monthly medians were roughly $187–198.
+
+**There is no usable June or July observation**, and May is incomplete. We cannot establish *when* prices moved through that gap or separate the effect of retail pricing from GTA VI anticipation, seasonality or a change in the listings collected.
+
+![Full-year timeline with June and July missing](figures/full_year_context_USD.png)
+
+## Price spread and uncertainty
+
+The middle half of eBay filtered sold prices moved from **$208.26–$242.74** in August to **$297.09–$351.85** in November 1–18. These are **25th–75th percentile ranges**, not confidence intervals. A *whole-observed-day* bootstrap gives an approximate **95% interval of +41% to +49%** for the observed USD median increase, conditional on the collected sample and the day-resampling assumptions; it does **not** address selection bias, dependence between adjacent days or misclassified items.
+
+![Technical plot: median and 25th–75th percentiles](figures/final_main_USD_monthly_IQR.png)
+
+A separate [daily eBay USD trend](figures/final_eBay_USD_prelaunch_trend.png) shows all **110 observed days from 1 August to 18 November**, with the 19 November release shown only as an event marker after the data ends.
+
+## Accessible euro estimates (supplementary only)
+
+eBay reports **USD SOLD prices** through the third-party provider. Historical European Central Bank daily reference rates were applied **to each sale's date** to estimate EUR; these are not verified original euro checkout amounts.
+
+**eBay sold prices, estimated EUR**
+
+| Period | Median estimated EUR | Filtered records |
 |---|---:|---:|
-| Typical reported sold price (median) | **$230.54** | **$330.81** |
-| Middle 50% of prices (25th–75th percentile) | $208.26–$242.74 | $297.09–$351.85 |
-| Records | 301 | 372 |
+| August 2026 | **€199.00** | 301 |
+| November 1–18, 2026 | **€298.58** | 372 |
 
-The observed median increased **43.5%**. A whole-observed-day bootstrap yields an approximate **95% interval of +41.0% to +48.7%**, *conditional on the collected sample and the resampling assumptions*. Neither the change nor that interval identifies a GTA VI causal effect or fixes provider sampling bias.
+The estimated EUR change is **+50.0%** instead of +43.5% in USD because the historical USD/EUR exchange-rate movement affects the per-sale EUR conversions. Original USD results remain the headline.
 
-![Main monthly chart: sold prices and middle-half range](figures/final_main_USD_monthly_IQR.png)
+**Kleinanzeigen advertised ASKING prices, actual EUR**
 
-**How to read this:** A *median* is the middle observed price, not a prediction or an average of daily medians. The vertical shading shows where the middle half of filtered prices fell. November contains only 1–18 November, and the product classifier has not been independently hand-validated.
-
-## Timeline toward the scheduled GTA VI release
-
-The series below includes **110 consecutive observed dates from 1 August through 18 November 2026**. The scheduled GTA VI release date, **19 November 2026**, is shown only as context, after the last observation. The smoothed line is a *seven-calendar-day median of daily medians*, not a median over the individual sales in each seven-day window.
-
-![Observed eBay price trend with scheduled release marker](figures/final_eBay_USD_prelaunch_trend.png)
-
-## Side-by-side prices in euros
-
-eBay's third-party provider reported USD amounts. For accessibility to German readers, I also estimate their EUR equivalents using **historical ECB USD-per-EUR rates applied by sale date**. The estimated EUR numbers are **not verified original checkout amounts**.
-
-| Source and measure | Earlier period | November 1–18 |
+| Period | Median asking EUR | Listing-day observations |
 |---|---:|---:|
-| eBay reported **sold** prices, estimated EUR | **€199.00** (August, n=301) | **€298.58** (n=372) |
-| Kleinanzeigen **asking** prices, EUR | **€240** (October 26–31, n=48) | **€290** (n=237) |
+| October 26–31, 2026 | €240 | 48 |
+| November 1–18, 2026 | €290 | 237 |
 
-**The dates, listings and price types differ.** Currency conversion does not make eBay sold prices equivalent to Kleinanzeigen advertised prices; these figures must not be interpreted as matched transactions or a controlled comparison. The estimated EUR eBay change over August–November was +50.0%; the change differs from USD partly because the exchange rate moved.
+**These are not the same periods or price measures.** Kleinanzeigen is weaker evidence: only **six observed baseline days**, no day verified complete, potential repeated listings, and substantially different results depending on how identical-value rows and classification flags are handled (approximately **+18% to +30%** in the tested versions). For this source, the defensible takeaway is that *observed asking prices were higher in November*, not a precise market-wide percentage.
 
-![Two marketplaces in estimated/actual EUR, shown separately](figures/final_ebay_vs_klein_EUR_comparison.png)
+![EUR supplemental view: separate eBay sold and Kleinanzeigen asking prices](figures/final_ebay_vs_klein_EUR_comparison.png)
 
-More details and historical rates: [EUR conversion methodology](README_EUR_COMPARISON.md). The original USD charts and input aggregates remain in this repository.
+[Exchange-rate methodology, rate tables and conversion CSVs](README_EUR_COMPARISON.md). **Converting both to EUR does not make asking prices equivalent to actual sold prices.**
 
-## Statistical checks and uncertainty
+## Quality checks and important limitations
 
-- **Sample:** 18,502 deduplicated *source* eBay records, of which 2,380 met the inherited used-512 GB filter. Kleinanzeigen: 4,858 source observations and 285 filtered **listing-day** observations, not necessarily unique consoles.
-- **Exact-value repeats:** 163 eBay filtered rows and 64 Kleinanzeigen filtered rows share identical values in the minimal exported fields. Those fields cannot establish duplicate *transactions*. They are retained in the main analysis; removing them changes the eBay increase **43.5% → 43.2%** but moves Kleinanzeigen **20.8% → 30.2%**.
-- **Alternative classification:** Keeping only records approved by a separate console classifier gives approximately **+43.5%** for eBay, but the classifiers disagree frequently and neither has been fully manually audited.
-- **Missing days:** eBay has no observed records on **8–9 May** and **15 May–31 July**; Kleinanzeigen lacks **21–25 October, 4–5 November and 10–11 November**. These dates are **missing coverage, not zero sales**; no values were imputed. Days with data are not guaranteed to be complete market samples.
-- **Sampling and time dependence:** The bootstrap resampled whole observed days separately in each period (6,000 draws, fixed seed 20261119) but does not account for correlation between adjacent days, changes in collection effort, item-mix shifts, possible reobservations, selection bias, or exchange-rate-provider uncertainty. The Kleinanzeigen interval is particularly unstable because its baseline comprises just six observed days.
-- **Other explanations:** Microsoft's 2026 new-console retail pricing, seasonality, general electronics resale demand, and differing bundles or item condition could all affect the observed changes. See [methodology and limitations](METHODOLOGY.md).
+- **Unverified console classification:** A secondary classifier disagreed with the inherited used-512 GB selector on 1,272 of 2,380 eBay records and 120 of 285 Kleinanzeigen observations. Those disagreements are not all proven false positives. When restricted to records the secondary classifier accepted, the eBay August–November increase remained approximately **+43.5%**.
+- **Duplicate uncertainty:** The minimal audit extract contains **163 eBay and 64 Kleinanzeigen exact identical-value rows**. These may reflect repeat collection or genuinely equal prices; the exported fields lack transaction IDs sufficient to prove what is duplicated. They remain in the main sample **provisionally**; removing identical rows gives **eBay +43.2%** (vs +43.5%) and **Kleinanzeigen +30.2%** (vs +20.8%). Because Kleinanzeigen changes substantially, its point estimate must not be overinterpreted.
+- **Sampling limitations:** eBay has **2,380 filtered records** out of 18,502 source records, with missing 8–9 May and **15 May–31 July**; Kleinanzeigen has **285 filtered listing-day observations** from 4,858 collected observations and missing 21–25 Oct, 4–5 Nov and 10–11 Nov. None of these samples is a verified census. Missing dates are never assigned fake prices.
+- **No causal identification:** Retail replacement cost, promotional activity, seasonal demand, item condition, bundles, changing listing mix and selection by providers may explain some of the pattern. Similar percentage rises in retail and resale prices cannot be equated: the observed periods and currencies differ.
 
-## Reproduce public charts without an API key
+Full assumptions, duplicates and bootstrap results: [statistical audit](STATISTICAL_AUDIT.md), [methodology](METHODOLOGY.md).
 
-The following uses **only published aggregate CSV files**—no seller details or row-level sale records—and regenerates the three featured charts.
+## Reproduce the published charts
+
+Only **public, non-identifying aggregate tables** are needed. The original row-level records, API keys and seller details remain private.
 
 ```bash
 python -m pip install -r requirements.txt
 python public_visuals.py
+python social_visuals.py
 ```
 
-Additional analysis: `python analyze.py` regenerates earlier historical charts; `python fx_comparison.py` regenerates the prior EUR figures. The published monthly quartile table is a *derived aggregate* from private row-level data; charts reproduce those published aggregates, **not the private scraping or classification workflow**.
+[`public_visuals.py`](public_visuals.py) generates the technical plots. [`social_visuals.py`](social_visuals.py) generates the simplified hero and full-year context and improves the supplementary EUR comparison. [`data/`](data) contains aggregates; [`figures/`](figures) contains the published graphics. **The scripts cannot recreate private row-level classification or statistical resampling from public aggregates alone.**
 
-## Repository contents
-
-- [`public_visuals.py`](public_visuals.py): featured public visualization code
-- [`data/`](data): aggregated pricing and historical EUR conversion data
-- [`figures/`](figures): ready-to-share charts
-- [`README_EUR_COMPARISON.md`](README_EUR_COMPARISON.md): currency conversion and comparison details
-- [`METHODOLOGY.md`](METHODOLOGY.md) and [`FUTURE_RESEARCH.md`](FUTURE_RESEARCH.md): research limitations and future controls
-
-**This is a personal exploratory study.** No API keys, seller-identifying information or raw provider listings are intentionally published. This project is not affiliated with Rockstar Games, Microsoft, eBay, Kleinanzeigen or the data providers.
+This is an independent observational study, not affiliated with Microsoft, Rockstar Games, eBay, Kleinanzeigen or the third-party data providers.
