@@ -32,7 +32,8 @@ daily.to_csv(
 shared=pd.DataFrame({"date":pd.date_range("2026-10-21","2026-11-18")})
 shared=shared.merge(daily[["date","ebay_n","estimated_median_eur"]],on="date",how="left")
 shared=shared.merge(kl[["date","count","median"]],on="date",how="left")
-shared.rename(columns={"count":"klein_n","median":"klein_asking_median_eur"}).to_csv(
+shared = shared.rename(columns={"count":"klein_n","median":"klein_asking_median_eur"})
+shared.to_csv(
     D/"shared_dates_EUR_comparison.csv",index=False,float_format="%.6f")
 assert shared.klein_asking_median_eur.notna().sum()==20
 
