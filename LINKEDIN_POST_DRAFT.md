@@ -1,22 +1,28 @@
-# LinkedIn-ready post (not yet posted to LinkedIn)
+# LinkedIn post draft — REVIEW BEFORE POSTING
 
-Can a video game release period change what people pay for a secondhand console? 🎮📈
+**What happened to used Xbox Series S prices in Germany during 2026?** 🎮📊
 
-I analyzed historical prices for used Xbox Series S 512 GB consoles in Germany using Python and two marketplace datasets.
+I analyzed historical marketplace data in Python, including **2,380 filtered eBay sold-price records**.
 
-**One finding:** In my filtered third-party eBay sample, the middle reported sold price rose from **$230.54 in August (301 records)** to **$330.81 during 1–18 November 2026 (372 records)** — an **observed increase of 43.5%**.
+My clearest finding: the **median reported sold price** in this sample rose from **$230.54 in August (n=301)** to **$330.81 during 1–18 November (n=372)** — **+43.5%**.
 
-I also looked at Kleinanzeigen asking prices and estimated eBay euro equivalents using historical exchange rates. Importantly, **asking prices are not completed sales** and the two samples are not directly interchangeable.
+But there's a major complication: **Microsoft increased the NEW Xbox Series S 512 GB retail price in Germany from €349.99 to €499.99 on 1 August 2026**. And June–July historical sales coverage is missing. So the data cannot tell us whether GTA VI anticipation caused the resale-price rise.
 
-The real challenge wasn't just making a chart: it was checking duplicate values, testing alternative product filters, handling missing historical days without fabricating prices, and measuring uncertainty.
+I checked the finding against alternative product filters, identical-value records, price ranges and day-resampling uncertainty estimates. The eBay trend held up; the shorter Kleinanzeigen asking-price sample was less stable.
 
-This is **exploratory research, not proof that GTA VI caused the change**. Microsoft's new-console pricing, seasonality and item mix may also matter.
+The lesson for me wasn't only making a chart. It was learning how to **question the data behind the chart**.
 
-My Python code, readable charts, aggregates and full limitations are here:
+📈 Chart: simple eBay sold-price summary, with sample counts and retail-price context.
+
+Full code, visualizations, public aggregates and limitations:
 https://github.com/sebusubash-rgb/gta6-xbox-price-analysis
 
-What other factor would you test to explain the rise?
+What other factors would you test — retail pricing, seasonality, or something else?
 
-#Python #DataAnalytics #MarketResearch #DataVisualization #PersonalProject
+#Python #DataAnalytics #MarketResearch #DataVisualization
 
-**Suggested image to attach:** figures/final_main_USD_monthly_IQR.png or figures/final_eBay_USD_prelaunch_trend.png
+---
+
+**Image to attach:** `figures/hero_LinkedIn_USD.png`
+
+**Important:** USD here is the third-party provider's reported eBay sold-price currency, not confirmed original EUR checkout values. GTA VI release date: 19 Nov 2026; collection ends 18 Nov. This is an exploratory sample, not a causal study.
