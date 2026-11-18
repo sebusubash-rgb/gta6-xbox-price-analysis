@@ -1,4 +1,5 @@
 name: Generate public EUR-comparison charts
+# Rerun after correcting FX merge column naming
 on:
   push:
     paths:
