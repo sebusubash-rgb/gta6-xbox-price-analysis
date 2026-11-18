@@ -1,0 +1,31 @@
+name: Render reviewed Xbox research portfolio charts
+on:
+  push:
+    paths:
+      - '.github/workflows/render-reviewed-figures.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate inputs and render the public charts
+        run: python public_visuals.py
+      - name: Commit figures and remove temporary workflow
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f .github/workflows/render-reviewed-figures.yml
+          git add figures/final_main_USD_monthly_IQR.png figures/final_eBay_USD_prelaunch_trend.png figures/final_ebay_vs_klein_EUR_comparison.png .github/workflows/render-reviewed-figures.yml
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish reviewed Xbox price graphics from public summary data"
+            git push origin HEAD:main
+          fi
