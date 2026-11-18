@@ -26,7 +26,8 @@ daily=pd.merge_asof(cal,fx.rename(columns={"rate_date":"applied_rate_date"}),
 daily=daily.merge(eb[["date","count","median"]],on="date",how="left",validate="one_to_one")
 assert daily["median"].notna().all() and daily["usd_per_eur"].notna().all()
 daily["estimated_median_eur"]=daily["median"]/daily["usd_per_eur"]
-daily.rename(columns={"count":"ebay_n","median":"ebay_median_usd"}).to_csv(
+daily = daily.rename(columns={"count":"ebay_n","median":"ebay_median_usd"})
+daily.to_csv(
     D/"ebay_daily_estimated_EUR.csv",index=False,float_format="%.6f")
 shared=pd.DataFrame({"date":pd.date_range("2026-10-21","2026-11-18")})
 shared=shared.merge(daily[["date","ebay_n","estimated_median_eur"]],on="date",how="left")
