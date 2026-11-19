@@ -23,6 +23,6 @@ What other factors would you test — retail pricing, seasonality, or something 
 
 ---
 
-**Image to attach:** `figures/hero_LinkedIn_USD.png`
+**Images to attach in this order:** (1) `figures/hero_LinkedIn_USD.png` for the five-second headline; (2) `figures/full_year_context_USD.png` to show the pre-August baseline, missing June–July data and August's post-Microsoft-increase timing.
 
 **Important:** USD here is the third-party provider's reported eBay sold-price currency, not confirmed original EUR checkout values. GTA VI release date: 19 Nov 2026; collection ends 18 Nov. This is an exploratory sample, not a causal study.
