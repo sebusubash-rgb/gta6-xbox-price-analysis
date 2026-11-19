@@ -31,8 +31,8 @@ fig.text(.074,.922,"USED XBOX SERIES S · GERMANY",fontsize=12,color=TEAL,weight
 fig.text(.073,.865,"Prices in the filtered eBay sample",fontsize=25,color=NAVY,weight="bold")
 fig.text(.073,.815,"Typical reported SOLD price (median) · 512 GB · USD, excluding shipping",
          fontsize=12,color=MUTED)
-fig.text(.946,.874,f"+{delta:.1f}%",ha="right",fontsize=42,color=TEAL,weight="bold")
-fig.text(.946,.822,"August → Nov 1–18",ha="right",fontsize=11,color=MUTED)
+fig.text(.895,.874,f"+{delta:.1f}%",ha="right",fontsize=40,color=TEAL,weight="bold")
+fig.text(.895,.822,"August → Nov 1–18",ha="right",fontsize=11,color=MUTED)
 ax=fig.add_axes([.078,.24,.86,.505])
 x=np.arange(4)
 ax.bar(x,m.median_usd,width=.64,color=[PALE,PALE,PALE,TEAL])
@@ -46,7 +46,7 @@ ax.set_yticks([0,100,200,300],["$0","$100","$200","$300"])
 ax.tick_params(axis="both",length=0,pad=8,labelcolor=MUTED)
 ax.grid(axis="y",alpha=.12,color=NAVY);ax.set_axisbelow(True)
 fig.text(.074,.14,"CONTEXT",fontweight="bold",color=GOLD,fontsize=10)
-fig.text(.153,.14,"New Series S 512 GB retail price: €349.99 → €499.99, effective 1 Aug 2026.",
+fig.text(.153,.14,"Retail rose 1 Aug (€349.99 → €499.99). August is already post-increase; Jan–Apr used median: $193.",
          color=NAVY,fontsize=10)
 fig.text(.074,.095,"Observed sample change, not proof of a GTA VI effect. Nov is partial; classification not fully validated.",
          fontsize=10,color=MUTED)
