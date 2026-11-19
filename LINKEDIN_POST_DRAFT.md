@@ -1,28 +1,33 @@
-# LinkedIn post draft — REVIEW BEFORE POSTING
+# Final LinkedIn caption — copy/paste (not posted to LinkedIn)
 
-**What happened to used Xbox Series S prices in Germany during 2026?** 🎮📊
+I wanted to know whether GTA VI hype was pushing up used Xbox Series S prices in Germany. So I built a Python project to investigate it.
 
-I analyzed historical marketplace data in Python, including **2,380 filtered eBay sold-price records**.
+In my filtered eBay sample of reported sold prices, the median rose from **$230.54 in August** to **$330.81 during 1–18 November 2026** — **+43.5%**. In January–April, the typical price was around **$193**.
 
-My clearest finding: the **median reported sold price** in this sample rose from **$230.54 in August (n=301)** to **$330.81 during 1–18 November (n=372)** — **+43.5%**.
+With GTA VI launching on **19 November**, it initially looked like a straightforward story.
 
-But there's a major complication: **Microsoft increased the NEW Xbox Series S 512 GB retail price in Germany from €349.99 to €499.99 on 1 August 2026**. And June–July historical sales coverage is missing. So the data cannot tell us whether GTA VI anticipation caused the resale-price rise.
+**But it wasn't.**
 
-I checked the finding against alternative product filters, identical-value records, price ranges and day-resampling uncertainty estimates. The eBay trend held up; the shorter Kleinanzeigen asking-price sample was less stable.
+Microsoft increased the German retail price of a **new Xbox Series S 512 GB** from **€349.99 to €499.99 on 1 August**. Even my August comparison point was already after that increase. And I have no observations for June or July.
 
-The lesson for me wasn't only making a chart. It was learning how to **question the data behind the chart**.
+So the increase is visible in my sample, but I can't isolate a GTA VI effect from the retail-price change or other explanations.
 
-📈 Chart: simple eBay sold-price summary, with sample counts and retail-price context.
+I checked duplicate records, missing days, alternative product filters and statistical uncertainty. The eBay increase remained relatively stable; the smaller Kleinanzeigen asking-price sample was more sensitive to those choices.
 
-Full code, visualizations, public aggregates and limitations:
+For a future comparison, I'd examine used **PS5 prices**: GTA VI is available on PS5 too, but PS5 prices weren't subject to this particular Microsoft price increase.
+
+**Code, charts and limitations:**
 https://github.com/sebusubash-rgb/gta6-xbox-price-analysis
 
-What other factors would you test — retail pricing, seasonality, or something else?
-
-#Python #DataAnalytics #MarketResearch #DataVisualization
+What would you add to test whether GTA VI anticipation influenced secondhand console prices?
 
 ---
 
-**Images to attach in this order:** (1) `figures/hero_LinkedIn_USD.png` for the five-second headline; (2) `figures/full_year_context_USD.png` to show the pre-August baseline, missing June–July data and August's post-Microsoft-increase timing.
+## Attach TWO images in this order
 
-**Important:** USD here is the third-party provider's reported eBay sold-price currency, not confirmed original EUR checkout values. GTA VI release date: 19 Nov 2026; collection ends 18 Nov. This is an exploratory sample, not a causal study.
+1. **First — hero chart:** `figures/hero_LinkedIn_USD.png`
+   https://github.com/sebusubash-rgb/gta6-xbox-price-analysis/blob/main/figures/hero_LinkedIn_USD.png
+2. **Second — full-year context:** `figures/full_year_context_USD.png`
+   https://github.com/sebusubash-rgb/gta6-xbox-price-analysis/blob/main/figures/full_year_context_USD.png
+
+The image filenames and links are posting instructions, NOT part of the LinkedIn caption. Data collection ends 18 November 2026. USD is reported by the third-party eBay provider, not verified original euro checkout prices.
